@@ -5,7 +5,7 @@ import NavBar from '../Shared/NavBar';
 
 const Root = () => {
     return (
-      <div className="font-[Poppins]">
+      <div className="font-[Poppins] bg-[#0D0D0D]">
         <div className="">
           <NavBar></NavBar>
         </div>
