@@ -7,7 +7,7 @@ const NavBar = () => {
       <div className="fixed z-40 w-full px-10 lg:px-20  flex justify-between items-center mt-10">
         <div>
           <h1 className="text-[#00FCDB] text-4xl">
-            Ai <span className="text-white">Mentor</span>
+            Ai<span className="text-white">Mentor</span>
           </h1>
         </div>
 
@@ -26,9 +26,9 @@ const NavBar = () => {
         </div>
 
         <div className="text-white text-lg hidden lg:inline-block">
-          <button className="transition-all duration-300 border-2 border-white px-5 py-2 rounded-lg cursor-pointer hover:bg-[#3500FC] hover:border-[#3500FC]">
+          <NavLink to={"/login"} className="transition-all duration-300 border-2 border-white px-5 py-2 rounded-lg cursor-pointer hover:bg-[#3500FC] hover:border-[#3500FC]">
             Login
-          </button>
+          </NavLink>
         </div>
 
         <div className='lg:hidden text-white text-4xl'>
