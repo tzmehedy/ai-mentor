@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaArrowLeft, FaTwitter } from "react-icons/fa";
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { MdOutlineEmail } from "react-icons/md";
 import { IoMdKey, IoLogoFacebook } from "react-icons/io";
 import { FcGoogle } from "react-icons/fc";
@@ -11,10 +11,17 @@ import { toast } from 'react-toastify';
 const Login = () => {
   const {signInWithGoogle,login} = useAuth()
 
+  const location = useLocation()
+
+  const navigate = useNavigate()
+
+  console.log(location)
+
   const handelLoginWithGoogle = async()=>{
     await signInWithGoogle()
       .then(() => {
-        toast.success("Login Successful");
+        toast.success("Login Successful")
+        navigate(location?.state ? location?.state : "/")
       })
       .catch((err) => {
         toast.error(err.message);
@@ -31,6 +38,7 @@ const Login = () => {
     await login(email,password)
     .then(()=>{
       toast.success("Login Successful")
+      navigate(location?.state ? location?.state : "/");
     })
     .catch(err=>{
       toast.error(err.message)

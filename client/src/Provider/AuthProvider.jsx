@@ -60,11 +60,6 @@ const AuthProvider = ({children}) => {
       loading,
       setLoading,
     };
-
-    console.log(user)
-
-   
-
     return (
         <AuthContext.Provider value={info}>
             {
