@@ -4,9 +4,19 @@ import { Link, NavLink } from 'react-router-dom';
 import { MdOutlineEmail } from "react-icons/md";
 import { IoMdKey, IoLogoFacebook } from "react-icons/io";
 import { FcGoogle } from "react-icons/fc";
+import useAuth from '../../Hooks/useAuth';
 
 
 const Login = () => {
+  const {signInWithGoogle} = useAuth()
+
+  const handelLoginWithGoogle = ()=>{
+    signInWithGoogle()
+  }
+
+
+
+  
     return (
       <div className="bg-[#0D0D0D] min-h-screen">
         <div className="text-white text-xl flex">
@@ -74,7 +84,7 @@ const Login = () => {
                   Login With
                 </h1>
                 <div className='flex justify-between space-x-5'>
-                    <button className='text-3xl cursor-pointer'><FcGoogle></FcGoogle></button>
+                    <button onClick={handelLoginWithGoogle} className='text-3xl cursor-pointer'><FcGoogle></FcGoogle></button>
                     <button className='text-3xl cursor-pointer text-blue-600'><IoLogoFacebook></IoLogoFacebook></button>
                     <button className='text-3xl cursor-pointer text-sky-600'><FaTwitter></FaTwitter></button>
                 </div>
