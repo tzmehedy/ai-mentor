@@ -5,13 +5,37 @@ import { MdOutlineEmail } from "react-icons/md";
 import { IoMdKey, IoLogoFacebook } from "react-icons/io";
 import { FcGoogle } from "react-icons/fc";
 import useAuth from '../../Hooks/useAuth';
+import { toast } from 'react-toastify';
 
 
 const Login = () => {
-  const {signInWithGoogle} = useAuth()
+  const {signInWithGoogle,login} = useAuth()
 
-  const handelLoginWithGoogle = ()=>{
-    signInWithGoogle()
+  const handelLoginWithGoogle = async()=>{
+    await signInWithGoogle()
+      .then(() => {
+        toast.success("Login Successful");
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
+
+  }
+
+  const handelLogin = async(e) =>{
+    e.preventDefault()
+    const form = e.target 
+    const email = form.email.value 
+    const password = form.password.value 
+
+    await login(email,password)
+    .then(()=>{
+      toast.success("Login Successful")
+    })
+    .catch(err=>{
+      toast.error(err.message)
+    })
+
   }
 
 
@@ -41,7 +65,7 @@ const Login = () => {
                   </Link>
                 </p>
 
-                <form className="space-y-10">
+                <form onSubmit={handelLogin} className="space-y-10">
                   <div className="flex items-center space-x-3">
                     <label htmlFor="email" className="text-5xl">
                       <MdOutlineEmail></MdOutlineEmail>
@@ -83,10 +107,19 @@ const Login = () => {
                 <h1 className="text-3xl underline text-[#00FCDB]">
                   Login With
                 </h1>
-                <div className='flex justify-between space-x-5'>
-                    <button onClick={handelLoginWithGoogle} className='text-3xl cursor-pointer'><FcGoogle></FcGoogle></button>
-                    <button className='text-3xl cursor-pointer text-blue-600'><IoLogoFacebook></IoLogoFacebook></button>
-                    <button className='text-3xl cursor-pointer text-sky-600'><FaTwitter></FaTwitter></button>
+                <div className="flex justify-between space-x-5">
+                  <button
+                    onClick={handelLoginWithGoogle}
+                    className="text-3xl cursor-pointer"
+                  >
+                    <FcGoogle></FcGoogle>
+                  </button>
+                  <button className="text-3xl cursor-pointer text-blue-600">
+                    <IoLogoFacebook></IoLogoFacebook>
+                  </button>
+                  <button className="text-3xl cursor-pointer text-sky-600">
+                    <FaTwitter></FaTwitter>
+                  </button>
                 </div>
               </div>
             </div>
