@@ -18,7 +18,7 @@ const GeneratePaintings = () => {
         <div className="mt-10">
           <form>
             <input
-              className="w-11/12 px-3 py-3 border-4 border-white bg-white rounded-lg"
+              className="w-8/12 lg:w-11/12 px-3 py-3 border-4 border-white bg-white rounded-lg"
               type="text"
               name=""
               id=""
@@ -26,7 +26,7 @@ const GeneratePaintings = () => {
             />
 
             <input
-              className="px-3 py-3 bg-[#3500FC] ml-2 rounded-lg text-white font-bold"
+              className="px-3 py-3 bg-[#3500FC] ml-2 rounded-lg text-white font-bold "
               type="submit"
               value="Generate"
             />
