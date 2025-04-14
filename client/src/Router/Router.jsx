@@ -6,6 +6,7 @@ import Register from "../Pages/Register/Register";
 import PrivateRouter from "./PrivateRouter";
 import Paintings from "../Pages/Paintings/Paintings";
 import GeneratePaintings from "../Pages/GeneratePaintings/GeneratePaintings";
+import SinglePaintingDetails from "../Pages/SinglePaintingDetails/SinglePaintingDetails";
 
 const router = createBrowserRouter([
   {
@@ -26,7 +27,22 @@ const router = createBrowserRouter([
       },
       {
         path: "/generate-painting",
-        element: <PrivateRouter><GeneratePaintings></GeneratePaintings></PrivateRouter>
+        element: (
+          <PrivateRouter>
+            <GeneratePaintings></GeneratePaintings>
+          </PrivateRouter>
+        ),
+      },
+
+      {
+        path: "/paintings/:id",
+        element: (
+          <PrivateRouter>
+            <SinglePaintingDetails></SinglePaintingDetails>
+          </PrivateRouter>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/paintings/${params.id}`),
       },
     ],
   },
